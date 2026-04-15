@@ -1,4 +1,4 @@
-name: Build Cordova Android APK
+name: Build Cordova APK
 
 on:
   push:
@@ -9,22 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Install Cordova
-        run: npm install -g cordova
+        run: npm install -g cordova@12.0.0
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Add Android platform
-        run: cordova platform add android
-
-      - name: Build Android APK
-        run: cordova build android
+      - name: Build APK
+        run: |
+          cd incidentApp
+          cordova platform remove android || true
+          cordova platform add android@13
+          cordova build android --debug
