@@ -26,3 +26,9 @@ jobs:
           cordova platform remove android || true
           cordova platform add android@13
           cordova build android --debug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: incidentApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
