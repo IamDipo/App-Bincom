@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Incident</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Report Incident</h2>
+
+<form id="incident-form">
+    <input type="text" id="title" placeholder="Title" required>
+    
+    <select id="category">
+        <option>Accident</option>
+        <option>Fighting</option>
+        <option>Rioting</option>
+    </select>
+
+    <textarea id="description" placeholder="Description"></textarea>
+
+    <input type="file" id="image">
+
+    <img id="preview" width="100%" style="margin-top:10px; display:none;">
+
+    <button type="submit">Submit</button>
+</form>
+
+<a href="index.html">← Back</a>
+
+<script src="script.js"></script>
+</body>
+</html>
