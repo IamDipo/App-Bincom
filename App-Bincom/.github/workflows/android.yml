@@ -1,0 +1,29 @@
+name: Build Cordova APK
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Cordova
+        run: npm install -g cordova@12.0.0
+
+      - name: Move into project folder
+        run: cd incidentApp
+
+      - name: Add Android platform
+        run: cd incidentApp && cordova platform add android@13
+
+      - name: Build APK
+        run: cd incidentApp && cordova build android --debug
